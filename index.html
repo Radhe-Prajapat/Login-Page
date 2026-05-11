@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Lamp Login</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+</head>
+<body>
+    <div class="bg-light"></div>
+    
+    <div class="lamp-wrapper">
+        <div class="wire"></div>
+        <div class="lamp-shade">
+            <div class="bulb"></div>
+            <div class="light-glow"></div>
+            <div class="rope" id="ropeHandle" title="Pull to turn on light">
+                <svg width="200" height="300" class="rope-svg">
+                    <path id="ropePathBg" d="M 100 0 Q 100 60 100 120" stroke="#111" stroke-width="5" fill="transparent" stroke-linecap="round" />
+                    <path id="ropePathFg" d="M 100 0 Q 100 60 100 120" stroke="#555" stroke-width="5" stroke-dasharray="6 4" fill="transparent" stroke-linecap="round" />
+                </svg>
+                <div class="knob" id="knobElement">
+                    <div class="knob-ring"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="login-wrapper">
+        <form class="login-form" id="loginForm" autocomplete="off">
+            <div class="form-header">
+                <h2>Login</h2>
+                <p>Pull the rope to illuminate</p>
+            </div>
+            
+            <div class="input-group">
+                <input type="email" id="email" placeholder=" " required>
+                <label for="email">Email Address</label>
+                <div class="glow-border"></div>
+            </div>
+            
+            <div class="input-group">
+                <input type="password" id="password" placeholder=" " required>
+                <label for="password">Password</label>
+                <div class="glow-border"></div>
+            </div>
+            
+            <button type="submit" class="login-btn">Sign In</button>
+        </form>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

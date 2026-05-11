@@ -1,0 +1,314 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #08080a;
+    font-family: 'Poppins', sans-serif;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    color: #fff;
+}
+
+.bg-light {
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at 50% 30%, rgba(212, 175, 55, 0.12) 0%, transparent 50%);
+    opacity: 0;
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Lamp Setup */
+.lamp-wrapper {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 15;
+    transform-origin: top center;
+    will-change: transform;
+}
+
+.wire {
+    width: 3px;
+    height: 150px;
+    background: linear-gradient(to right, #111, #333, #111);
+    box-shadow: 2px 0 5px rgba(0,0,0,0.5);
+}
+
+.lamp-shade {
+    width: 180px;
+    height: 70px;
+    background: linear-gradient(to bottom, #2a2b30, #18191c);
+    border-radius: 90px 90px 0 0;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.8), 
+    inset 0 2px 5px rgba(255,255,255,0.05);
+}
+
+.lamp-shade::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    width: 100%;
+    height: 8px;
+    background: #111;
+    border-radius: 50%;
+}
+
+.bulb {
+    width: 50px;
+    height: 25px;
+    background: #222;
+    border-radius: 0 0 25px 25px;
+    position: absolute;
+    bottom: -20px;
+    z-index: 2;
+    box-shadow: inset 0 -2px 5px rgba(0,0,0,0.8);
+}
+
+.light-glow {
+    position: absolute;
+    top: 70px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 800px;
+    height: 1000px;
+    background: radial-gradient(ellipse 80% 100% at 50% -5%, rgba(255, 235, 160, 0.25) 0%, rgba(255, 235, 160, 0.05) 50%, transparent 75%);
+    opacity: 0;
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Rope and Knob */
+.rope {
+    position: absolute;
+    top: 30px;
+    right: 35px;
+    width: 30px;
+    height: 80px;
+    cursor: grab;
+    z-index: -1;
+}
+
+.rope:active {
+    cursor: grabbing;
+}
+
+.rope-svg {
+    position: absolute;
+    top: 0;
+    left: -85px;
+    pointer-events: none;
+    overflow: visible;
+}
+
+.knob {
+    position: absolute;
+    top: 80px;
+    left: 7px;
+    width: 16px;
+    height: 30px;
+    background: linear-gradient(135deg, #555, #222);
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.6), inset 2px 2px 4px rgba(255,255,255,0.1);
+    display: flex;
+    justify-content: center;
+    transition: background 0.3s;
+}
+
+body.light-on .knob {
+    background: linear-gradient(135deg, #f1c40f, #d35400);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.6), inset 2px 2px 4px rgba(255,255,255,0.4);
+}
+
+.knob-ring {
+    width: 8px;
+    height: 8px;
+    border: 2px solid #555;
+    border-radius: 50%;
+    margin-top: -5px;
+    background: transparent;
+    transition: border-color 0.3s;
+}
+
+body.light-on .knob-ring {
+    border-color: #d35400;
+}
+
+/* Form Container */
+.login-wrapper {
+    position: relative;
+    z-index: 5;
+    margin-top: 180px; /* Space for lamp */
+}
+
+.login-form {
+    background: #1a1b1e;
+    padding: 45px 40px;
+    border-radius: 20px;
+    width: 400px;
+    opacity: 0.1;
+    pointer-events: none;
+    box-shadow: -5px -5px 10px rgba(255,255,255,0.01),
+                5px 5px 10px rgba(0,0,0,0.5);
+    border: 1px solid rgba(255,255,255,0.02);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+body.light-on .login-form {
+    pointer-events: all;
+}
+
+.form-header {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.form-header h2 {
+    color: #e0e0e0;
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+}
+
+.form-header p {
+    color: #888;
+    font-size: 0.9rem;
+}
+
+.input-group {
+    position: relative;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 18px 20px 14px 20px;
+    background: #1e1f23;
+    border: 1px solid rgba(255,255,255,0.03);
+    border-radius: 12px;
+    color: #fff;
+    font-size: 1rem;
+    outline: none;
+    box-shadow: inset -3px -3px 6px rgba(255,255,255,0.02),
+                inset 3px 3px 6px rgba(0,0,0,0.3);
+    transition: all 0.3s ease;
+}
+
+.input-group input:focus {
+    background: #1a1b1e;
+    border-color: rgba(212, 175, 55, 0.4);
+    box-shadow: inset -2px -2px 5px rgba(255,255,255,0.03),
+                inset 2px 2px 5px rgba(0,0,0,0.4),
+                0 0 10px rgba(212, 175, 55, 0.1);
+}
+
+.glow-border {
+    position: absolute;
+    bottom: -1px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0%;
+    height: 2px;
+    background: #d4af37;
+    box-shadow: 0 0 10px #d4af37;
+    transition: width 0.3s ease;
+}
+
+.input-group input:focus ~ .glow-border {
+    width: 90%;
+}
+
+.input-group label {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #666;
+    pointer-events: none;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    font-size: 1rem;
+    padding: 0 5px;
+}
+
+.input-group input:focus ~ label,
+.input-group input:not(:placeholder-shown) ~ label {
+    top: 0;
+    transform: translateY(-50%) scale(0.85);
+    left: 15px;
+    color: #d4af37;
+    background: #1a1b1e;
+    border-radius: 4px;
+    letter-spacing: 0.5px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.login-btn {
+    width: 100%;
+    padding: 16px;
+    background: linear-gradient(145deg, #222328, #1c1d21);
+    border: 1px solid rgba(255,255,255,0.02);
+    border-radius: 12px;
+    color: #555;
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    cursor: pointer;
+    box-shadow: -5px -5px 10px rgba(255,255,255,0.01),
+                5px 5px 10px rgba(0,0,0,0.4);
+    transition: all 0.4s ease;
+    margin-top: 10px;
+    position: relative;
+    overflow: hidden;
+}
+
+body.light-on .login-btn {
+    color: #d4af37;
+    box-shadow: -4px -4px 10px rgba(255,255,255,0.03),
+                4px 4px 10px rgba(0,0,0,0.6);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+body.light-on .login-btn:hover {
+    box-shadow: -2px -2px 5px rgba(255,255,255,0.05),
+                2px 2px 5px rgba(0,0,0,0.6),
+                0 0 15px rgba(212, 175, 55, 0.3);
+    transform: translateY(-2px);
+    color: #ffeaa7;
+    text-shadow: 0 0 5px rgba(212, 175, 55, 0.5);
+}
+
+body.light-on .login-btn:active {
+    box-shadow: inset -3px -3px 6px rgba(255,255,255,0.03),
+                inset 3px 3px 6px rgba(0,0,0,0.5);
+    transform: translateY(1px);
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+    .login-form {
+        width: 90%;
+        padding: 35px 25px;
+    }
+}
